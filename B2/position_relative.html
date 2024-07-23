@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+</head>
+<body>
+    <div class="parent">
+        Parent div
+        <div class="child">
+            Child div
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    .parent{
+        border: 1px solid red;
+        padding: 20px;
+        position: absolute;
+        top: 40px;
+        left: 50px;
+        
+    }
+    .child{
+        border: 1px solid blue;
+        padding: 20px;
+        position: relative;
+    }
+    
+    body{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+</style>
