@@ -1,0 +1,38 @@
+/* style for index.html */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+.header {
+    background-color:aqua;
+    margin-bottom: 15px;
+    height: 140px;
+    width: 100%;
+}
+.content{
+    background-color:aqua;
+    height: 450px;
+    float: right;
+    width: calc(100% - 250px);
+}
+.sidebar {
+    background-color:aqua;
+    height: 450px;
+    float: left;
+    width: 235px;
+}
+.footer {
+    background-color:aqua;
+    height: 50px;
+    margin-top: 15px;
+}
+.clear{
+    clear:both;
+}
