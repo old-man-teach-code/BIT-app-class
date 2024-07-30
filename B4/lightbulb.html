@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Light Bulb</title>
+</head>
+
+<body style="text-align: center;">
+    <h1>LightBulb</h1>
+    <p>
+        <i id="light-bulb" class="fa fa-lightbulb-o" style="font-size: 54px;"></i>
+    </p>
+    <button style="height: 40px; width: 60px;" onclick="changeColor()">
+        Off
+    </button>
+</body>
+
+</html>
+<script>
+    try {
+        let lightBulb = document.getElementById('light-bulb');
+        lightBulb.style.color = 'red';
+        let btn = document.querySelector('button');
+        let isOn = true;
+        function changeColor() {
+            isOn = !isOn;
+            if (isOn) {
+                lightBulb.style.color = 'red';
+                btn.innerText = 'Off';
+                btn.style.backgroundColor = 'green';    
+            } else {
+                lightBulb.style.color = 'black';
+                btn.innerText = 'On';
+                btn.style.backgroundColor = 'gray';
+            }
+        }
+    } catch (error) {
+        console.log(error);
+    }
+</script>
