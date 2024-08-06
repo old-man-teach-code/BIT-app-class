@@ -1,0 +1,16 @@
+{
+    "name": "John",
+    "age": 30,
+    "tasks": [
+        {
+            "title": "Task 1",
+            "detail": "This is task 1",
+            "status": true
+        },
+        {
+            "title": "Task 2",
+            "detail": "This is task 2",
+            "status": false
+        }
+    ]
+}
