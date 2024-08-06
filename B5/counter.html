@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1>
+        Số lần nhấn nút: <span id="count">0</span>
+    </h1>
+    <h3>
+        Thời gian còn lại: <span id="time">#</span>
+    </h3>
+    <button id="btn-count" class="btn btn-primary btn btn-lg mt-4" onclick="increaseCount()">
+        Click
+    </button>
+    <button class="btn btn-danger btn-lg mt-4" onclick="resetCount()">
+        Xóa counting
+    </button>
+</body>
+
+</html>
+<style>
+    body {
+        text-align: center;
+    }
+</style>
+<script>
+    let count = 0; // khai báo biến count để lưu số lần nhấn nút
+
+    /**
+    * Chạy code khi trang web được load
+    */
+    window.onload = function () {
+        var seconds = 10;
+        var display = document.getElementById('time');
+        var btn = document.getElementById('btn-count');
+        startTimer(seconds, display, btn);
+        // get giá trị của biến count từ localStorage
+        if (localStorage.getItem('count')) {
+            count = parseInt(localStorage.getItem('count'));
+            document.getElementById('count').innerText = count;
+        }
+    };
+
+    /**
+     * Hàm reset giá trị của biến count về 0
+     *
+     */
+    function resetCount() {
+        count = 0;
+        document.getElementById('count').innerText = count;
+        // xóa giá trị của biến count khỏi localStorage
+        localStorage.removeItem('count');
+    }
+
+    /**
+     * Hàm tăng giá trị của biến count lên 1
+     *
+     */
+    function increaseCount() {
+        count++; // tăng giá trị của biến count lên 1
+        document.getElementById('count').innerText = count; // hiển thị giá trị của biến count lên màn hình
+        // set giá trị của biến count vào localStorage
+        localStorage.setItem('count', count); // lưu giá trị của biến count vào localStorage
+    }
+
+    /**
+    * Hàm đếm thời gian
+    * @param {number} timer - thời gian cần đếm
+    * @param {HTMLElement} display - thẻ hiển thị thời gian
+    * @param {HTMLElement} btn - nút bấm
+    * @return {void}
+    */
+    function startTimer(timer, display, btn) {
+        setInterval(function () {
+            --timer;
+            if (timer > 0) {
+                display.textContent = timer;
+            } else if (timer === 0) {
+               let your_name = prompt("Nhập tên của bạn: ");
+               alert(`Thời gian của bạn ${your_name} đã hết!`);
+               if (confirm("Bạn có muốn chơi lại không?")) {
+                   timer = 10;
+                   display.textContent = timer;
+                   count = 0;
+                   document.getElementById('count').innerText = count;
+                   localStorage.removeItem('count');
+               } else {
+                   display.textContent = "END GAME!";
+                   btn.disabled = true;
+               }
+            } 
+            else {
+                display.textContent = "END GAME!";
+                btn.disabled = true;
+            }
+        }, 1000);
+    }
+
+</script>
